@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simple Landing Page</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --bg: #0f172a;
+      --fg: #0b1220;
+      --text: #0b1220;
+      --muted: #475569;
+      --card: #ffffff;
+      --accent: #2563eb;
+      --accent-fg: #ffffff;
+      --radius: 16px;
+      --maxw: 1100px;
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color: var(--text);
+      background: #f8fafc;
+      line-height: 1.6;
+    }
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+    .hero {
+      position: relative;
+      min-height: 60vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.55);
+      transform: scale(1.05);
+    }
+    .hero > .content {
+      position: relative;
+      padding: 40px 24px;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 3.8vw + 1rem, 3.25rem);
+      letter-spacing: -0.02em;
+    }
+    .sub {
+      font-size: clamp(1rem, 1.2vw + .6rem, 1.25rem);
+      color: #dbeafe;
+      max-width: 48ch;
+      margin: 0 auto 24px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--accent-fg);
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+      box-shadow: 0 8px 20px rgba(37,99,235,.35);
+    }
+    .btn:focus-visible { outline: 3px solid #bfdbfe; outline-offset: 2px; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); box-shadow: 0 5px 14px rgba(37,99,235,.3); }
+
+    .features {
+      padding: 56px 0;
+    }
+    .flex3 {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .card {
+      flex: 1 1 260px;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: 0 6px 24px rgba(2,6,23,.06);
+      border: 1px solid #e2e8f0;
+    }
+    .card h3 { margin: 0 0 8px; font-size: 1.15rem; }
+    .card p { margin: 0; color: var(--muted); }
+
+    .form-wrap {
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 56px 0;
+    }
+    form {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: 0 6px 24px rgba(2,6,23,.05);
+      max-width: 720px;
+      margin: 0 auto;
+      display: grid;
+      gap: 14px;
+    }
+    label { font-weight: 600; font-size: 0.95rem; }
+    input, textarea {
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      font: inherit;
+    }
+    textarea { min-height: 120px; resize: vertical; }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .submit {
+      justify-self: start;
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: none;
+      background: var(--fg);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity .15s ease, transform .1s ease;
+    }
+    .submit:hover { opacity: .92; transform: translateY(-1px); }
+    .submit:active { transform: translateY(0); }
+
+    footer {
+      padding: 28px 0;
+      color: #475569;
+      font-size: .95rem;
+      text-align: center;
+    }
+
+    @media (min-width: 720px) {
+      .row { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .btn, .submit { transition: none; }
+      .hero::before { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="content container">
+      <h1>Build Something Great</h1>
+      <p class="sub">A clean, simple starter with a bold hero, three feature blocks, a contact form, and a tidy footer.</p>
+      <a class="btn" href="#contact">Get Started</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="features">
+      <div class="container flex3">
+        <article class="card">
+          <h3>Fast Setup</h3>
+          <p>Drop this file in your project and ship a polished layout in minutes.</p>
+        </article>
+        <article class="card">
+          <h3>Responsive</h3>
+          <p>Designed to look great on phones, tablets, and desktops without tweaks.</p>
+        </article>
+        <article class="card">
+          <h3>Accessible</h3>
+          <p>Semantic HTML and clear focus styles help everyone use your site.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="form-wrap">
+      <div class="container">
+        <form action="#" method="post">
+          <div class="row">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+          </div>
+          <button class="submit" type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Your Company. All rights reserved.</div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
